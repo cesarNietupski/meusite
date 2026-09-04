@@ -10,8 +10,7 @@
   }
 
   /* Mantém logo e botão de fechar acima do painel do menu. */
-  .site-header > .logo,
-  .menu-toggle {
+  .site-header > .logo {
     position: relative;
     z-index: 90;
   }
@@ -26,16 +25,29 @@
     color: #a92d49;
   }
 
+  /* Botão fixo na tela para facilitar a navegação durante o scroll. */
   .menu-toggle {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    min-width: 92px;
+    justify-content: center;
+    min-width: 94px;
+    min-height: 42px;
+    padding: 0 16px;
     gap: 10px;
+    border: 1px solid rgba(241,239,233,.22);
+    border-radius: 999px;
+    background: rgba(8,8,8,.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: var(--paper);
     font-size: .72rem;
     font-weight: 700;
     letter-spacing: .18em;
+    box-shadow: 0 8px 28px rgba(0,0,0,.22);
   }
 
   .menu-toggle i {
@@ -57,6 +69,7 @@
     transform: translateY(-100%);
     transition: transform .5s cubic-bezier(.76,0,.24,1);
     overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .nav.open {
