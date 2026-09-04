@@ -47,39 +47,51 @@
 @media(min-width:1024px){
   .section-pad{padding-left:clamp(48px,5vw,96px);padding-right:clamp(48px,5vw,96px)}
 
-  .compact-showcase{width:100%;max-width:1600px}
+  .site-header{padding-left:4vw;padding-right:4vw}
+  .logo{font-size:max(1.5rem,1.35vw)}
+  .nav{font-size:max(.8rem,.62vw)}
+  .hero{padding-left:4vw;padding-right:4vw}
+  .hero-kicker,.section-label{font-size:max(.75rem,.55vw)}
+  .hero h1{font-size:13.5vw}
+  .hero-bottom p{font-size:1.8vw}
+
+  .compact-showcase{width:92vw;max-width:none}
   .portfolio-heading{margin-bottom:30px}
-  .portfolio-heading>span,.pricing-intro>span{font-size:clamp(.78rem,.42vw,1rem)}
-  .portfolio-heading h2{font-size:clamp(3.5rem,4.5vw,6rem)}
-  .portfolio-heading p,.pricing-intro>p{font-size:clamp(1rem,.72vw,1.2rem);line-height:1.55}
-  .portfolio-filters button{padding:10px 20px;font-size:clamp(.78rem,.48vw,.95rem)}
+  .portfolio-heading>span,.pricing-intro>span{font-size:max(.78rem,.62vw)}
+  .portfolio-heading h2{font-size:4.5vw}
+  .portfolio-heading p,.pricing-intro>p{font-size:max(1rem,.82vw);line-height:1.55}
+  .portfolio-filters button{padding:max(10px,.55vw) max(20px,1.05vw);font-size:max(.78rem,.62vw)}
   .compact-showcase .projects{gap:clamp(18px,1.5vw,30px)}
   .compact-showcase .project-meta{padding:16px 10px}
-  .compact-showcase .project-meta h2{font-size:clamp(1.25rem,1.15vw,1.75rem)}
-  .compact-showcase .project-meta p{font-size:clamp(.75rem,.5vw,.95rem);line-height:1.4}
+  .compact-showcase .project-meta h2{font-size:max(1.25rem,1.35vw)}
+  .compact-showcase .project-meta p{font-size:max(.75rem,.62vw);line-height:1.4}
 
-  .manifesto-copy{max-width:1500px}
-  .manifesto-foot{font-size:clamp(.75rem,.48vw,.95rem)}
+  .manifesto-copy{max-width:82vw;font-size:6.5vw}
+  .manifesto-foot{font-size:max(.75rem,.62vw)}
 
-  .services .section-label span:last-child{font-size:clamp(3.25rem,4vw,5.5rem)}
+  .services .section-label span:last-child{font-size:4.5vw}
   .services .service-list{gap:clamp(18px,1.4vw,28px)}
-  .services .service-list article{min-height:clamp(330px,24vw,440px);padding:clamp(28px,2vw,42px)}
+  .services .service-list article{min-height:24vw;padding:2vw}
   .services .service-list article:after{left:clamp(28px,2vw,42px);right:clamp(28px,2vw,42px);bottom:100px}
   .services .service-list article:hover{padding-left:clamp(28px,2vw,42px)}
-  .services .service-list article>span{font-size:clamp(.78rem,.48vw,.95rem)}
-  .services .service-list h2{font-size:clamp(2.5rem,2.65vw,4.25rem);max-width:10ch}
-  .services .service-list p{font-size:clamp(1rem,.72vw,1.2rem);max-width:34ch}
+  .services .service-list article>span{font-size:max(.78rem,.62vw)}
+  .services .service-list h2{font-size:3vw;max-width:10ch}
+  .services .service-list p{font-size:max(1rem,.82vw);max-width:34ch}
 
   .pricing-intro{margin-bottom:54px}
-  .pricing-intro h2{font-size:clamp(3.75rem,4.75vw,6.5rem)}
-  .package-list{width:100%;max-width:1600px;gap:clamp(16px,1.2vw,24px)}
-  .package-list>article{grid-template-rows:64px 72px 96px 1fr auto;min-height:500px;padding:clamp(28px,1.8vw,38px)}
-  .package-list strong{font-size:clamp(1.75rem,1.45vw,2.25rem);min-height:64px}
-  .package-list strong small{font-size:clamp(.65rem,.4vw,.78rem)}
+  .pricing-intro h2{font-size:4.75vw}
+  .package-list{width:92vw;max-width:none;gap:1.2vw}
+  .package-list>article{grid-template-rows:4vw 4.5vw 6vw 1fr auto;min-height:31vw;padding:1.8vw}
+  .package-list strong{font-size:1.65vw;min-height:4vw}
+  .package-list strong small{font-size:max(.65rem,.5vw)}
   .package-title{min-height:72px}
-  .package-title h3{font-size:clamp(1.5rem,1.25vw,2rem)}
-  .package-title b{font-size:clamp(.65rem,.4vw,.78rem)}
-  .package-list article>p{font-size:clamp(.9rem,.62vw,1.05rem);line-height:1.55;min-height:96px}
-  .package-list ul{font-size:clamp(.88rem,.6vw,1rem);line-height:1.9}
-  .package-list article>a{padding:15px 14px;font-size:clamp(.72rem,.48vw,.88rem)}
+  .package-title h3{font-size:1.5vw}
+  .package-title b{font-size:max(.65rem,.5vw)}
+  .package-list article>p{font-size:max(.9rem,.72vw);line-height:1.55;min-height:6vw}
+  .package-list ul{font-size:max(.88rem,.7vw);line-height:1.9}
+  .package-list article>a{padding:max(15px,.8vw) 14px;font-size:max(.72rem,.58vw)}
+
+  .contact>p,.contact>a{font-size:max(.8rem,.65vw)}
+  .contact h2{font-size:10vw}
+  footer p,footer small,footer div{font-size:max(.78rem,.62vw)}
 }
