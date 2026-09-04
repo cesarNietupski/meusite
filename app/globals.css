@@ -50,7 +50,7 @@
   .site-header{padding-left:4vw;padding-right:4vw}
   .logo{font-size:max(1.5rem,1.35vw)}
   .nav{font-size:max(.8rem,.62vw)}
-  .hero{padding-left:4vw;padding-right:4vw}
+  .hero{padding-left:4vw;padding-right:4vw;padding-top:max(150px,8vw)}
   .hero-kicker,.section-label{font-size:max(.75rem,.55vw)}
   .hero h1{font-size:13.5vw}
   .hero-bottom p{font-size:1.8vw}
