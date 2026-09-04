@@ -42,3 +42,44 @@
 /* Serviços em cards: três colunas no desktop e uma coluna no celular. */
 .services .section-label{align-items:flex-end}.services .section-label span:last-child{font:400 clamp(2.5rem,4.5vw,5rem)/.9 Georgia,serif;letter-spacing:-.045em;text-transform:none}.services .service-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.services .service-list article{display:flex;min-height:310px;padding:26px;flex-direction:column;align-items:flex-start;gap:0;border:1px solid #3c3839;border-radius:18px;background:linear-gradient(145deg,rgba(116,29,48,.18),rgba(255,255,255,.025));position:relative;overflow:hidden}.services .service-list article:after{content:"";position:absolute;left:26px;right:26px;bottom:82px;height:1px;background:var(--line)}.services .service-list article:hover{padding-left:26px;background:linear-gradient(145deg,rgba(116,29,48,.32),rgba(255,255,255,.04));border-color:var(--wine);transform:translateY(-4px)}.services .service-list article>span{color:var(--wine);font-size:.72rem;letter-spacing:.12em;margin-bottom:42px}.services .service-list h2{font:400 clamp(2rem,3vw,3.4rem)/.95 Georgia,serif;letter-spacing:-.04em;margin:0;max-width:9ch}.services .service-list p{margin:auto 0 0;padding-top:28px;max-width:31ch;color:#b8b8b8;font-size:.92rem;line-height:1.55}
 @media(max-width:900px){.services .service-list{grid-template-columns:1fr}.services .service-list article{min-height:250px}.services .service-list h2{max-width:none}.services .section-label span:last-child{font-size:3rem}}
+
+/* Escala para desktop/notebook: ocupa melhor a tela e mantém a leitura confortável. */
+@media(min-width:1024px){
+  .section-pad{padding-left:clamp(48px,5vw,96px);padding-right:clamp(48px,5vw,96px)}
+
+  .compact-showcase{width:100%;max-width:1600px}
+  .portfolio-heading{margin-bottom:30px}
+  .portfolio-heading>span,.pricing-intro>span{font-size:clamp(.78rem,.42vw,1rem)}
+  .portfolio-heading h2{font-size:clamp(3.5rem,4.5vw,6rem)}
+  .portfolio-heading p,.pricing-intro>p{font-size:clamp(1rem,.72vw,1.2rem);line-height:1.55}
+  .portfolio-filters button{padding:10px 20px;font-size:clamp(.78rem,.48vw,.95rem)}
+  .compact-showcase .projects{gap:clamp(18px,1.5vw,30px)}
+  .compact-showcase .project-meta{padding:16px 10px}
+  .compact-showcase .project-meta h2{font-size:clamp(1.25rem,1.15vw,1.75rem)}
+  .compact-showcase .project-meta p{font-size:clamp(.75rem,.5vw,.95rem);line-height:1.4}
+
+  .manifesto-copy{max-width:1500px}
+  .manifesto-foot{font-size:clamp(.75rem,.48vw,.95rem)}
+
+  .services .section-label span:last-child{font-size:clamp(3.25rem,4vw,5.5rem)}
+  .services .service-list{gap:clamp(18px,1.4vw,28px)}
+  .services .service-list article{min-height:clamp(330px,24vw,440px);padding:clamp(28px,2vw,42px)}
+  .services .service-list article:after{left:clamp(28px,2vw,42px);right:clamp(28px,2vw,42px);bottom:100px}
+  .services .service-list article:hover{padding-left:clamp(28px,2vw,42px)}
+  .services .service-list article>span{font-size:clamp(.78rem,.48vw,.95rem)}
+  .services .service-list h2{font-size:clamp(2.5rem,2.65vw,4.25rem);max-width:10ch}
+  .services .service-list p{font-size:clamp(1rem,.72vw,1.2rem);max-width:34ch}
+
+  .pricing-intro{margin-bottom:54px}
+  .pricing-intro h2{font-size:clamp(3.75rem,4.75vw,6.5rem)}
+  .package-list{width:100%;max-width:1600px;gap:clamp(16px,1.2vw,24px)}
+  .package-list>article{grid-template-rows:64px 72px 96px 1fr auto;min-height:500px;padding:clamp(28px,1.8vw,38px)}
+  .package-list strong{font-size:clamp(1.75rem,1.45vw,2.25rem);min-height:64px}
+  .package-list strong small{font-size:clamp(.65rem,.4vw,.78rem)}
+  .package-title{min-height:72px}
+  .package-title h3{font-size:clamp(1.5rem,1.25vw,2rem)}
+  .package-title b{font-size:clamp(.65rem,.4vw,.78rem)}
+  .package-list article>p{font-size:clamp(.9rem,.62vw,1.05rem);line-height:1.55;min-height:96px}
+  .package-list ul{font-size:clamp(.88rem,.6vw,1rem);line-height:1.9}
+  .package-list article>a{padding:15px 14px;font-size:clamp(.72rem,.48vw,.88rem)}
+}
