@@ -116,7 +116,6 @@ export default function Home() {
     </header>
 
     <section id="inicio" className="hero">
-      <div className="hero-kicker"><span>Fotografia estratégica</span><span>Joinville · SC</span></div>
       <h1>Não é só<br />uma <em>foto.</em></h1>
       <div className="hero-bottom"><p>É a forma como o seu negócio<br />será lembrado.</p><a className="circle-link" href="#trabalhos" aria-label="Ver trabalhos">↓</a></div>
       <div className="wine-orbit" aria-hidden="true" />
