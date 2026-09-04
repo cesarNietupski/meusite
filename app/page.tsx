@@ -99,10 +99,10 @@ export default function Home() {
       if (event.key === "ArrowRight") changePhoto(1);
       if (event.key === "ArrowLeft") changePhoto(-1);
     };
-    document.body.style.overflow = activeAlbum ? "hidden" : "";
+    document.body.style.overflow = activeAlbum || menuOpen ? "hidden" : "";
     window.addEventListener("keydown", onKey);
     return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
-  }, [activeAlbum, changePhoto, closeAlbum]);
+  }, [activeAlbum, menuOpen, changePhoto, closeAlbum]);
 
   const openAlbum = (index: number) => { setAlbumIndex(index); setPhotoIndex(0); };
 
