@@ -1,8 +1,9 @@
 /* =========================================================
    MENU MOBILE CSR
-   Reformulação visual exclusiva para telas até 760px.
+   Ativa o menu compacto em telas de até 900px para evitar
+   que os links do cabeçalho fiquem espremidos ao redimensionar.
    ========================================================= */
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .site-header {
     padding: 22px 22px;
     border-bottom: 1px solid rgba(241,239,233,.14);
