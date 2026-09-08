@@ -34,14 +34,17 @@ import styles from "./about-section.module.css";
 */
 const albums = [
   {
-    title: "Presença",
+    title: "Retato de Posicionamento",
     filter: "Retratos",
     category: "Retrato corporativo",
-    cover: "https://images-pw.pixieset.com/elementfield/K5eA0zp/MikaLarsonPhotography_259-edit-35b94e2a-1000.jpg",
-    alt: "Retrato profissional em fundo escuro",
+    cover: "https://drive.google.com/uc?export=view&id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u",
+    alt: "Retrato de posicionamento",
     images: [
-      "https://images-pw.pixieset.com/elementfield/K5eA0zp/MikaLarsonPhotography_259-edit-35b94e2a-1000.jpg",
-      "https://images.squarespace-cdn.com/content/v1/568f7d367086d7ca717fc389/1645082214600-JG2ZMWLYZVHFFT3CPFL5/safripol%2B2020_9170.jpg",
+      "https://drive.google.com/uc?export=view&id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u",
+      "https://drive.google.com/uc?export=view&id=1uFWbmwz3y9nqeCBb9nqpdEwCn-c-ssdl",
+      "https://drive.google.com/uc?export=view&id=1WGVXRFwM7v0m42bk5_vSg6ekpPV_w-lq",
+      "https://drive.google.com/uc?export=view&id=1Vu1mJL_7TktNzHfe3v_xzDkcoBzEjMZy",
+      "https://drive.google.com/uc?export=view&id=1e6l2GVqMq-Snc8TH4VJURixJCAq27Vcf",
     ],
   },
   {
