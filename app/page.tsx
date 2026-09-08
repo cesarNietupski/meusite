@@ -136,6 +136,10 @@ export default function Home() {
       <div className={styles.grid}>
         <p className={styles.copy}>Toda marca tem uma versão que ainda <em>não foi vista.</em> Nosso trabalho é encontrá-la — e colocá-la diante das pessoas certas.</p>
         <aside className={styles.profile} aria-label="Fotógrafo responsável">
+          <div className={styles.identity}>
+            <h2 className={styles.name}>Cesar Nietupski</h2>
+            <p className={styles.role}>Fotógrafo responsável</p>
+          </div>
           <div className={styles.photoFrame}>
             <img
               className={styles.photo}
@@ -143,10 +147,6 @@ export default function Home() {
               alt="Cesar Nitupski, fotógrafo responsável pela CSR"
               loading="lazy"
             />
-          </div>
-          <div className={styles.identity}>
-            <h2 className={styles.name}>Cesar Nitupski</h2>
-            <p className={styles.role}>Fotógrafo responsável</p>
           </div>
         </aside>
       </div>
