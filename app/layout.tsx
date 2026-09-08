@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./mobile-menu.css";
 import "./pricing-layout.css";
+import "./responsive-layout.css";
 
 export const metadata: Metadata = {
   title: "CSR Fotografia — Imagens que posicionam",
