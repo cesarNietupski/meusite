@@ -149,6 +149,91 @@
   white-space: normal !important;
 }
 
+/* Desktop grande / tela cheia.
+   Amplia a seção sem alterar os breakpoints usados quando a janela diminui. */
+@media (min-width: 1500px) {
+  .pricing {
+    min-height: 100svh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    padding-top: clamp(90px, 8vh, 140px) !important;
+    padding-bottom: clamp(90px, 8vh, 140px) !important;
+  }
+
+  .pricing .pricing-intro {
+    max-width: 1200px !important;
+    margin-bottom: clamp(52px, 5vh, 82px) !important;
+  }
+
+  .pricing .pricing-intro > span {
+    font-size: clamp(.75rem, .62vw, .9rem) !important;
+  }
+
+  .pricing .pricing-intro h2 {
+    font-size: clamp(5rem, 5.8vw, 7.2rem) !important;
+    line-height: .9 !important;
+  }
+
+  .pricing .pricing-intro > p {
+    font-size: clamp(1rem, .9vw, 1.2rem) !important;
+  }
+
+  .pricing .package-list {
+    gap: clamp(20px, 1.4vw, 30px) !important;
+  }
+
+  .pricing .package-list > article {
+    min-height: clamp(560px, 58vh, 720px) !important;
+    padding: clamp(30px, 2vw, 42px) !important;
+    border-radius: 18px !important;
+  }
+
+  .pricing .package-title {
+    margin-bottom: 26px !important;
+  }
+
+  .pricing .package-title h3 {
+    font-size: clamp(1.8rem, 1.55vw, 2.25rem) !important;
+  }
+
+  .pricing .package-title b {
+    font-size: clamp(.68rem, .52vw, .8rem) !important;
+  }
+
+  .pricing .package-list article > p {
+    max-width: 38ch !important;
+    margin-bottom: 30px !important;
+    font-size: clamp(1rem, .88vw, 1.18rem) !important;
+    line-height: 1.55 !important;
+  }
+
+  .pricing .package-list ul {
+    margin-bottom: 32px !important;
+    font-size: clamp(.98rem, .8vw, 1.12rem) !important;
+    line-height: 1.8 !important;
+  }
+
+  .pricing .package-list li {
+    margin-bottom: 8px !important;
+  }
+
+  .pricing .package-list strong {
+    margin-bottom: 22px !important;
+    font-size: clamp(2rem, 1.65vw, 2.55rem) !important;
+  }
+
+  .pricing .package-list strong small {
+    font-size: clamp(.68rem, .5vw, .78rem) !important;
+  }
+
+  .pricing .package-list article > a {
+    min-height: 50px !important;
+    padding: 14px 18px !important;
+    font-size: clamp(.74rem, .6vw, .88rem) !important;
+  }
+}
+
 /* Em larguras menores, os cards ficam mais baixos porque passam a ter
    mais espaço horizontal por item. */
 @media (max-width: 1300px) {
