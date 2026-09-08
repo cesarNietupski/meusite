@@ -1,214 +1,12 @@
 /* =========================================================
    RESPONSIVIDADE GLOBAL CSR
 
-   Desktop largo mantém exatamente as proporções existentes.
-   Este arquivo só reorganiza o conteúdo quando a janela diminui.
+   Em telas largas, nenhuma proporção original é alterada.
+   As regras abaixo só entram conforme a janela perde espaço.
    ========================================================= */
 
 /* Notebook / desktop menor */
 @media (max-width: 1499px) {
-  .section-pad,
-  .site-header,
-  .hero {
-    padding-left: clamp(28px, 3.5vw, 56px);
-    padding-right: clamp(28px, 3.5vw, 56px);
-  }
-
-  .compact-showcase {
-    width: 100%;
-    max-width: none;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Pacotes: 4 colunas deixam de ser usadas antes de os cards apertarem. */
-  .pricing .package-list {
-    display: grid !important;
-    width: 100% !important;
-    max-width: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: clamp(16px, 2vw, 28px) !important;
-  }
-
-  .pricing .package-list > article {
-    width: 100% !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-  }
-
-  .pricing .package-title,
-  .pricing .package-list article > p,
-  .pricing .package-list ul,
-  .pricing .package-list strong,
-  .pricing .package-list article > a {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  .pricing .package-list article > p,
-  .pricing .package-list li {
-    overflow-wrap: normal;
-    word-break: normal;
-  }
-
-  .pricing .package-title h3 {
-    font-size: clamp(1.35rem, 1.6vw, 1.8rem) !important;
-  }
-
-  .pricing .package-list article > p {
-    font-size: clamp(.95rem, 1vw, 1.12rem) !important;
-    line-height: 1.5 !important;
-  }
-
-  .pricing .package-list ul {
-    font-size: clamp(.84rem, .8vw, .98rem) !important;
-    line-height: 1.75 !important;
-  }
-
-  .pricing .package-list strong {
-    font-size: clamp(1.65rem, 1.8vw, 2.15rem) !important;
-  }
-
-  .pricing .package-list article > a {
-    font-size: clamp(.7rem, .65vw, .84rem) !important;
-  }
-}
-
-/* Janela intermediária */
-@media (max-width: 1200px) {
-  .hero h1 {
-    font-size: clamp(5.4rem, 12vw, 9.5rem);
-  }
-
-  .hero-bottom p {
-    font-size: clamp(1rem, 1.6vw, 1.4rem);
-  }
-
-  .compact-showcase .projects {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .portfolio-heading h2,
-  .pricing-intro h2 {
-    font-size: clamp(3rem, 5vw, 4.8rem);
-  }
-
-  .services .service-list {
-    grid-template-columns: 1fr;
-  }
-
-  .services .service-list article {
-    min-height: 250px;
-  }
-
-  .services .service-list h2 {
-    max-width: none;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-  }
-
-  footer {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-}
-
-/* Tablets, janelas pequenas e visualizações estreitas.
-   Aqui cada pacote vira um card de largura total. */
-@media (max-width: 1050px) {
-  .pricing .package-list {
-    grid-template-columns: minmax(0, 1fr) !important;
-    width: min(100%, 760px) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    gap: 18px !important;
-  }
-
-  .pricing .package-list > article {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) !important;
-    grid-template-rows: auto auto auto auto auto !important;
-    min-height: 0 !important;
-    height: auto !important;
-    padding: clamp(22px, 4vw, 32px) !important;
-  }
-
-  .pricing .package-title {
-    grid-column: 1 !important;
-    grid-row: 1 !important;
-    margin-bottom: 18px !important;
-  }
-
-  .pricing .package-list article > p {
-    grid-column: 1 !important;
-    grid-row: 2 !important;
-    width: 100% !important;
-    margin: 0 0 22px !important;
-    font-size: clamp(.95rem, 2vw, 1.08rem) !important;
-  }
-
-  .pricing .package-list ul {
-    grid-column: 1 !important;
-    grid-row: 3 !important;
-    width: 100% !important;
-    margin: 0 0 24px !important;
-    align-self: start !important;
-    font-size: clamp(.88rem, 1.8vw, 1rem) !important;
-    line-height: 1.7 !important;
-  }
-
-  .pricing .package-list strong {
-    grid-column: 1 !important;
-    grid-row: 4 !important;
-    width: 100% !important;
-    margin: 0 0 18px !important;
-    align-self: start !important;
-    font-size: clamp(1.7rem, 4vw, 2.2rem) !important;
-  }
-
-  .pricing .package-list article > a {
-    grid-column: 1 !important;
-    grid-row: 5 !important;
-    width: 100% !important;
-    margin: 0 !important;
-    font-size: clamp(.72rem, 1.5vw, .84rem) !important;
-  }
-}
-
-/* Tablet / janela estreita */
-@media (max-width: 900px) {
-  .section-pad,
-  .site-header,
-  .hero {
-    padding-left: clamp(20px, 4vw, 32px);
-    padding-right: clamp(20px, 4vw, 32px);
-  }
-
-  .hero h1 {
-    font-size: clamp(4.6rem, 15vw, 7.5rem);
-  }
-
-  .compact-showcase .projects {
-    grid-template-columns: 1fr;
-  }
-
-  .compact-showcase .project {
-    width: 100%;
-  }
-
-  footer {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  footer small {
-    grid-column: auto;
-  }
-}
-
-/* Mobile */
-@media (max-width: 760px) {
   body,
   main,
   section,
@@ -217,72 +15,416 @@
     min-width: 0;
   }
 
-  img {
-    max-width: 100%;
+  .section-pad,
+  .site-header,
+  .hero {
+    padding-left: clamp(28px, 3.5vw, 56px);
+    padding-right: clamp(28px, 3.5vw, 56px);
   }
 
+  .hero h1 {
+    font-size: clamp(6rem, 12vw, 11rem);
+  }
+
+  .compact-showcase,
+  .pricing .package-list {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing .package-list > article,
+  .compact-showcase .project,
+  .services article {
+    min-width: 0;
+  }
+
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(3rem, 5vw, 5rem);
+  }
+
+  .pricing .package-title h3 {
+    font-size: clamp(1.3rem, 1.55vw, 1.8rem);
+  }
+
+  .pricing .package-list article > p {
+    font-size: clamp(.92rem, .95vw, 1.08rem);
+    line-height: 1.5;
+  }
+
+  .pricing .package-list ul {
+    font-size: clamp(.82rem, .76vw, .98rem);
+    line-height: 1.75;
+  }
+
+  .pricing .package-list strong {
+    font-size: clamp(1.65rem, 1.75vw, 2.15rem);
+  }
+
+  .pricing .package-list article > a {
+    font-size: clamp(.7rem, .62vw, .84rem);
+  }
+}
+
+/* Notebook compacto / tablet horizontal */
+@media (max-width: 1180px) {
   .section-pad {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: clamp(58px, 7vw, 78px);
+    padding-bottom: clamp(58px, 7vw, 78px);
+  }
+
+  .section-label {
+    margin-bottom: clamp(36px, 5vw, 55px);
+  }
+
+  .hero {
+    min-height: 82svh;
+  }
+
+  .hero h1 {
+    font-size: clamp(5.2rem, 12vw, 8.8rem);
+  }
+
+  .hero-bottom p {
+    font-size: clamp(1rem, 1.6vw, 1.35rem);
+  }
+
+  .compact-showcase .projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(14px, 2vw, 22px);
+  }
+
+  .compact-showcase .project {
+    width: 100%;
+    margin: 0;
+  }
+
+  .services article {
+    grid-template-columns: 52px minmax(0, 1.1fr) minmax(240px, .9fr);
+    gap: clamp(16px, 2vw, 28px);
+  }
+
+  .services h2 {
+    font-size: clamp(2rem, 3.6vw, 3.2rem);
+  }
+
+  .services p {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .pricing-intro {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact h2 {
+    font-size: clamp(5rem, 9vw, 8rem);
+  }
+
+  footer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  footer small {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Tablet / janela estreita */
+@media (max-width: 900px) {
+  .section-pad,
+  .site-header,
+  .hero {
+    padding-left: clamp(22px, 4vw, 32px);
+    padding-right: clamp(22px, 4vw, 32px);
+  }
+
+  .hero {
+    min-height: 78svh;
+    padding-top: 112px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.4rem, 14vw, 7rem);
+    line-height: .8;
+  }
+
+  .hero h1 em {
+    padding-left: 7vw;
+  }
+
+  .hero-bottom {
+    gap: 24px;
+  }
+
+  .circle-link {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+  }
+
+  .portfolio-heading {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .portfolio-filters {
+    flex-wrap: wrap;
+  }
+
+  .services article {
+    grid-template-columns: 40px minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .services article > span {
+    grid-column: 1;
+  }
+
+  .services article h2 {
+    grid-column: 2;
+  }
+
+  .services article p {
+    grid-column: 2;
+    width: 100%;
+    max-width: 620px;
+  }
+
+  .pricing-intro h2 {
+    font-size: clamp(2.8rem, 8vw, 4.8rem);
+  }
+
+  .pricing-intro > p {
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .manifesto-foot {
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .contact {
+    min-height: 70svh;
+  }
+
+  .contact h2 {
+    font-size: clamp(4.5rem, 12vw, 7rem);
+  }
+}
+
+/* Mobile grande */
+@media (max-width: 760px) {
+  .section-pad {
+    padding: 58px 20px;
+  }
+
+  .section-label {
+    margin-bottom: 36px;
   }
 
   .hero {
     min-height: 100svh;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 120px;
+    padding: 112px 20px 26px;
   }
 
   .hero h1 {
-    font-size: clamp(4rem, 20vw, 7.2rem);
+    margin-top: 3vh;
+    font-size: clamp(4rem, 19vw, 6.5rem);
+    line-height: .78;
+  }
+
+  .hero h1 em {
+    padding-left: 4vw;
   }
 
   .hero-bottom p {
     font-size: 1rem;
   }
 
-  .portfolio-heading h2,
-  .pricing-intro h2 {
-    font-size: clamp(2.6rem, 12vw, 4rem);
+  .wine-orbit {
+    right: 12vw;
+    bottom: 20vh;
   }
 
-  .compact-showcase {
-    width: 100%;
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+  }
+
+  .portfolio-heading p,
+  .pricing-intro > p {
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+
+  .portfolio-filters {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+
+  .portfolio-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-filters button {
+    flex: 0 0 auto;
+    white-space: nowrap;
   }
 
   .compact-showcase .projects {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
   }
 
-  .services .service-list h2 {
-    font-size: clamp(2rem, 9vw, 3rem);
+  .compact-showcase .project {
+    width: 100%;
   }
 
-  .pricing .package-list {
-    width: 100% !important;
+  .compact-showcase .image-wrap {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .services article {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 12px;
+    padding: 22px 0;
+  }
+
+  .services h2 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .services p {
+    font-size: .95rem;
+    line-height: 1.55;
+  }
+
+  .pricing-intro {
+    margin-bottom: 32px;
   }
 
   .pricing .package-list > article {
-    padding: 22px !important;
+    padding: clamp(20px, 5vw, 26px);
   }
 
   .pricing .package-list article > p {
-    font-size: 1rem !important;
+    font-size: 1rem;
   }
 
   .pricing .package-list ul {
-    font-size: .94rem !important;
+    font-size: .94rem;
   }
 
   .pricing .package-list strong {
-    font-size: clamp(1.8rem, 8vw, 2.3rem) !important;
+    font-size: clamp(1.8rem, 7vw, 2.25rem);
   }
 
   .pricing .package-list article > a {
-    font-size: .78rem !important;
+    min-height: 44px;
+    font-size: .76rem;
+  }
+
+  .contact {
+    min-height: 68svh;
   }
 
   .contact h2 {
-    font-size: clamp(4rem, 16vw, 7rem);
+    margin: 34px 0;
+    font-size: clamp(4rem, 15vw, 6.5rem);
+  }
+
+  .contact > a {
+    gap: 18px;
+    font-size: .72rem;
+  }
+
+  footer {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 42px 20px;
+    gap: 20px;
+  }
+
+  footer small {
+    grid-column: 1;
+  }
+
+  .lightbox {
+    padding: 18px;
+  }
+
+  .lightbox-stage {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  .lightbox-stage img {
+    max-height: 68vh;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 520px) {
+  .section-pad {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.55rem, 18vw, 5.4rem);
+  }
+
+  .hero-bottom {
+    align-items: flex-end;
+  }
+
+  .hero-bottom p {
+    max-width: 230px;
+  }
+
+  .circle-link {
+    width: 54px;
+    height: 54px;
+  }
+
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(2.25rem, 10.5vw, 3.4rem);
+  }
+
+  .services h2 {
+    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  }
+
+  .manifesto-foot {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-foot span {
+    white-space: normal;
+  }
+
+  .contact h2 {
+    font-size: clamp(3.5rem, 14vw, 5rem);
   }
 }
