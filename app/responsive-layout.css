@@ -1,110 +1,72 @@
 /* =========================================================
    RESPONSIVIDADE GLOBAL CSR
 
-   IMPORTANTE:
-   - Em telas largas, este arquivo NÃO altera nenhuma proporção do layout.
-   - As regras abaixo só entram quando a janela é reduzida.
-   - O visual atual do desktop permanece exatamente como definido nos
-     arquivos originais (globals.css, pricing-layout.css e CSS modules).
+   Desktop largo mantém exatamente as proporções existentes.
+   Este arquivo só reorganiza o conteúdo quando a janela diminui.
    ========================================================= */
 
-/* =========================================================
-   DESKTOP / NOTEBOOK MENOR
-   Começa a reduzir somente quando a janela fica abaixo de 1500px.
-   ========================================================= */
+/* Notebook / desktop menor: mantém a identidade visual, mas evita
+   que os quatro cards sejam comprimidos lado a lado. */
 @media (max-width: 1499px) {
-  .section-pad {
-    padding-left: clamp(32px, 4vw, 64px);
-    padding-right: clamp(32px, 4vw, 64px);
-  }
-
-  .site-header {
-    padding-left: clamp(32px, 4vw, 64px);
-    padding-right: clamp(32px, 4vw, 64px);
-  }
-
+  .section-pad,
+  .site-header,
   .hero {
-    padding-left: clamp(32px, 4vw, 64px);
-    padding-right: clamp(32px, 4vw, 64px);
-  }
-
-  .hero h1 {
-    font-size: clamp(6rem, 12vw, 11rem);
-  }
-
-  .hero-bottom p {
-    font-size: clamp(1.1rem, 1.7vw, 1.6rem);
+    padding-left: clamp(28px, 3.5vw, 56px);
+    padding-right: clamp(28px, 3.5vw, 56px);
   }
 
   .compact-showcase,
   .package-list {
-    width: 92vw;
+    width: 100%;
     max-width: none;
     margin-left: auto;
     margin-right: auto;
   }
 
-  .portfolio-heading h2 {
-    font-size: clamp(3rem, 4.5vw, 5rem);
-  }
-
-  .services .section-label span:last-child {
-    font-size: clamp(2.8rem, 4.5vw, 5rem);
-  }
-
-  .services .service-list h2 {
-    font-size: clamp(2.2rem, 3vw, 3.4rem);
-  }
-
-  .pricing-intro h2 {
-    font-size: clamp(3rem, 4.75vw, 5.5rem);
+  .package-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 28px);
   }
 
   .package-list > article {
     min-width: 0;
+    min-height: 0;
   }
 
-  .package-title h3 {
-    font-size: clamp(1.35rem, 1.5vw, 1.8rem);
-  }
-
-  .package-list article > p {
-    font-size: clamp(1rem, 1vw, 1.3rem);
-  }
-
-  .package-list ul {
-    font-size: clamp(.85rem, .75vw, 1rem);
-  }
-
-  .package-list strong {
-    font-size: clamp(1.7rem, 1.7vw, 2.2rem);
-  }
-
+  .package-title,
+  .package-list article > p,
+  .package-list ul,
+  .package-list strong,
   .package-list article > a {
-    font-size: clamp(.7rem, .62vw, .85rem);
+    min-width: 0;
+    max-width: 100%;
   }
 
-  .contact h2 {
-    font-size: clamp(5rem, 9vw, 9rem);
+  .package-list article > p,
+  .package-list li {
+    overflow-wrap: normal;
+    word-break: normal;
   }
 }
 
-/* =========================================================
-   JANELAS INTERMEDIÁRIAS
-   A partir daqui os blocos deixam de ser espremidos.
-   ========================================================= */
+/* Janela intermediária: reduz dimensões gradualmente e reorganiza
+   portfólio e serviços antes que qualquer conteúdo fique apertado. */
 @media (max-width: 1200px) {
+  .hero h1 {
+    font-size: clamp(5.4rem, 12vw, 9.5rem);
+  }
+
+  .hero-bottom p {
+    font-size: clamp(1rem, 1.6vw, 1.4rem);
+  }
+
   .compact-showcase .projects {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .package-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-
-  .package-list > article {
-    min-height: 0;
+  .portfolio-heading h2,
+  .pricing-intro h2 {
+    font-size: clamp(3rem, 5vw, 4.8rem);
   }
 
   .services .service-list {
@@ -112,7 +74,33 @@
   }
 
   .services .service-list article {
-    min-height: 260px;
+    min-height: 250px;
+  }
+
+  .services .service-list h2 {
+    max-width: none;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+  }
+
+  .package-title h3 {
+    font-size: clamp(1.45rem, 2vw, 1.8rem);
+  }
+
+  .package-list article > p {
+    font-size: clamp(.95rem, 1.35vw, 1.15rem);
+    line-height: 1.5;
+  }
+
+  .package-list ul {
+    font-size: clamp(.88rem, 1.15vw, 1rem);
+  }
+
+  .package-list strong {
+    font-size: clamp(1.7rem, 2.4vw, 2.2rem);
+  }
+
+  .package-list article > a {
+    font-size: clamp(.7rem, .9vw, .82rem);
   }
 
   footer {
@@ -121,82 +109,63 @@
   }
 }
 
-/* =========================================================
-   TABLET / JANELA ESTREITA
-   Usa estrutura próxima do mobile antes de o conteúdo apertar.
-   ========================================================= */
+/* Tablet / janela estreita: passa para uma coluna antes de o conteúdo
+   começar a quebrar de forma ruim. */
 @media (max-width: 900px) {
-  .section-pad {
-    padding-left: clamp(22px, 4vw, 36px);
-    padding-right: clamp(22px, 4vw, 36px);
-  }
-
+  .section-pad,
   .site-header,
   .hero {
-    padding-left: clamp(22px, 4vw, 36px);
-    padding-right: clamp(22px, 4vw, 36px);
+    padding-left: clamp(20px, 4vw, 32px);
+    padding-right: clamp(20px, 4vw, 32px);
   }
 
   .hero h1 {
-    font-size: clamp(4.5rem, 15vw, 8rem);
+    font-size: clamp(4.6rem, 15vw, 7.5rem);
   }
 
-  .compact-showcase .projects {
+  .compact-showcase .projects,
+  .package-list {
     grid-template-columns: 1fr;
   }
 
-  .compact-showcase .project {
-    width: 100%;
-  }
-
-  .services .service-list {
-    grid-template-columns: 1fr;
-  }
-
+  .compact-showcase .project,
   .package-list {
     width: 100%;
-    grid-template-columns: 1fr;
   }
 
   .package-list > article {
-    min-height: 0;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto auto auto;
-  }
-
-  .package-title,
-  .package-list article > p,
-  .package-list ul,
-  .package-list strong,
-  .package-list article > a {
-    grid-column: 1;
+    padding: clamp(22px, 4vw, 30px);
   }
 
   .package-title {
+    grid-column: 1;
     grid-row: 1;
   }
 
   .package-list article > p {
+    grid-column: 1;
     grid-row: 2;
   }
 
   .package-list ul {
+    grid-column: 1;
     grid-row: 3;
     align-self: start;
+    margin-bottom: 24px;
   }
 
   .package-list strong {
+    grid-column: 1;
     grid-row: 4;
     align-self: start;
-    margin-top: 18px;
+    margin: 8px 0 18px;
   }
 
   .package-list article > a {
+    grid-column: 1;
     grid-row: 5;
-  }
-
-  .pricing-intro h2 {
-    font-size: clamp(3rem, 9vw, 4.8rem);
   }
 
   footer {
@@ -209,10 +178,8 @@
   }
 }
 
-/* =========================================================
-   MOBILE
-   Mantém o comportamento mobile existente e evita overflow.
-   ========================================================= */
+/* Mobile: conserva o layout mobile já existente e apenas garante
+   largura, leitura e ausência de overflow. */
 @media (max-width: 760px) {
   body,
   main,
@@ -239,7 +206,7 @@
   }
 
   .hero h1 {
-    font-size: clamp(4rem, 20vw, 7.5rem);
+    font-size: clamp(4rem, 20vw, 7.2rem);
   }
 
   .hero-bottom p {
@@ -281,7 +248,6 @@
 
   .package-list strong {
     font-size: clamp(1.8rem, 8vw, 2.3rem);
-    margin-top: 18px;
   }
 
   .package-list article > a {
