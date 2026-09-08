@@ -29,7 +29,7 @@ import styles from "./about-section.module.css";
   • Para excluir um álbum: apague seu bloco inteiro, da abertura { ao },.
   • Google Drive: deixe a foto como "Qualquer pessoa com o link".
     Pegue o ID entre /d/ e /view e monte a URL assim:
-    https://drive.google.com/uc?export=view&id=ID_DA_IMAGEM
+    https://drive.google.com/thumbnail?id=ID_DA_IMAGEM&sz=w2000
   • Preencha o texto `alt` descrevendo a foto (acessibilidade e SEO).
 */
 const albums = [
@@ -40,11 +40,11 @@ const albums = [
     cover: "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
     alt: "Retrato de posicionamento",
     images: [
-      "https://drive.google.com/uc?export=view&id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
-      "https://drive.google.com/uc?export=view&id=1uFWbmwz3y9nqeCBb9nqpdEwCn-c-ssdl&sz=w2000",
-      "https://drive.google.com/uc?export=view&id=1WGVXRFwM7v0m42bk5_vSg6ekpPV_w-lq&sz=w2000",
-      "https://drive.google.com/uc?export=view&id=1Vu1mJL_7TktNzHfe3v_xzDkcoBzEjMZy&sz=w2000",
-      "https://drive.google.com/uc?export=view&id=1e6l2GVqMq-Snc8TH4VJURixJCAq27Vcf&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1uFWbmwz3y9nqeCBb9nqpdEwCn-c-ssdl&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1WGVXRFwM7v0m42bk5_vSg6ekpPV_w-lq&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1Vu1mJL_7TktNzHfe3v_xzDkcoBzEjMZy&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1e6l2GVqMq-Snc8TH4VJURixJCAq27Vcf&sz=w2000",
     ],
   },
   {
