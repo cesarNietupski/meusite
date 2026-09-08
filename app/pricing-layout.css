@@ -1,0 +1,75 @@
+/* =========================================================
+   HIERARQUIA DOS CARDS DE PACOTES
+   Ordem visual: título -> descrição -> itens -> valor -> botão.
+   Mantém os valores próximos ao CTA e sobe o texto descritivo.
+   ========================================================= */
+
+.package-list > article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr auto auto;
+  align-items: start;
+}
+
+.package-title {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 0;
+  margin: 0 0 20px;
+  align-self: start;
+}
+
+.package-list article > p {
+  grid-column: 1;
+  grid-row: 2;
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0 0 24px;
+  align-self: start;
+}
+
+.package-list ul {
+  grid-column: 1;
+  grid-row: 3;
+  margin: 0 0 24px;
+  align-self: start;
+}
+
+.package-list strong {
+  grid-column: 1;
+  grid-row: 4;
+  min-height: 0;
+  margin: 0 0 18px;
+  align-self: end;
+}
+
+.package-list article > a {
+  grid-column: 1;
+  grid-row: 5;
+  width: 100%;
+  align-self: end;
+}
+
+@media (max-width: 760px) {
+  .package-list > article {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto auto;
+  }
+
+  .package-title {
+    margin: 0 0 16px;
+  }
+
+  .package-list article > p {
+    margin: 0 0 20px;
+  }
+
+  .package-list ul {
+    margin: 0 0 22px;
+  }
+
+  .package-list strong {
+    margin: 0 0 18px;
+  }
+}
