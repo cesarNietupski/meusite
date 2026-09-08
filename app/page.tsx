@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import styles from "./about-section.module.css";
 
 /*
   ================================================================
@@ -132,7 +133,23 @@ export default function Home() {
 
     <section id="sobre" className="manifesto section-pad">
       <div className="section-label"><span>02</span><span>Nosso olhar</span></div>
-      <p className="manifesto-copy">Toda marca tem uma versão que ainda <em>não foi vista.</em> Nosso trabalho é encontrá-la — e colocá-la diante das pessoas certas.</p>
+      <div className={styles.grid}>
+        <p className={styles.copy}>Toda marca tem uma versão que ainda <em>não foi vista.</em> Nosso trabalho é encontrá-la — e colocá-la diante das pessoas certas.</p>
+        <aside className={styles.profile} aria-label="Fotógrafo responsável">
+          <div className={styles.photoFrame}>
+            <img
+              className={styles.photo}
+              src="https://avatars.githubusercontent.com/u/44011116?v=4"
+              alt="Cesar Nitupski, fotógrafo responsável pela CSR"
+              loading="lazy"
+            />
+          </div>
+          <div className={styles.identity}>
+            <h2 className={styles.name}>Cesar Nitupski</h2>
+            <p className={styles.role}>Fotógrafo responsável</p>
+          </div>
+        </aside>
+      </div>
       <div className="manifesto-foot"><p>Direção, sensibilidade e intenção em cada enquadramento.</p><span>CSR / 2026</span></div>
     </section>
 
