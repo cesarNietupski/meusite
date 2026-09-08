@@ -88,7 +88,7 @@
   .package-title h3{font-size:1.5vw}
   .package-title b{font-size:max(.65rem,.5vw)}
   .package-list article>p{font-size:max(1.3rem,1vw);line-height:1.55;min-height:6vw}
-  .package-list ul{font-size:max(1.5rem,.7vw);line-height:1.9}
+  .package-list ul{font-size:max(4rem,.7vw);line-height:1.9}
   .package-list article>a{padding:max(15px,.8vw) 14px;font-size:max(1rem,.85vw)}
 
   .contact>p,.contact>a{font-size:max(.8rem,.65vw)}
