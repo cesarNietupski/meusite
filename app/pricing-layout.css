@@ -33,7 +33,7 @@
   grid-column: 1;
   grid-row: 3;
   margin: 0 0 24px;
-  align-self: center;
+  align-self: end;
 }
 
 .package-list strong {
