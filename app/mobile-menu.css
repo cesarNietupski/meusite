@@ -1,22 +1,20 @@
 /* =========================================================
    MENU MOBILE CSR
-   Ativa o menu compacto em telas de até 900px para evitar
-   que os links do cabeçalho fiquem espremidos ao redimensionar.
+   Ativa o menu compacto em telas de até 1100px para impedir
+   que os links do cabeçalho sejam comprimidos ao redimensionar.
    ========================================================= */
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .site-header {
     padding: 22px 22px;
     border-bottom: 1px solid rgba(241,239,233,.14);
     z-index: 80;
   }
 
-  /* Mantém logo e botão de fechar acima do painel do menu. */
   .site-header > .logo {
     position: relative;
     z-index: 90;
   }
 
-  /* Corrige o contraste do CSR: C e R claros, S vinho. */
   .site-header .logo {
     color: var(--paper);
     font-size: 1.6rem;
@@ -26,13 +24,13 @@
     color: #a92d49;
   }
 
-  /* Botão fixo na tela para facilitar a navegação durante o scroll. */
+  /* Substitui o menu horizontal pelo botão compacto. */
   .menu-toggle {
     position: fixed;
     top: 18px;
     right: 22px;
     z-index: 100;
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     min-width: 94px;
@@ -55,14 +53,17 @@
     display: none;
   }
 
-  /* Painel do menu: fundo preto para o S do CSR não desaparecer. */
-  .nav {
+  /* O menu horizontal deixa de participar do cabeçalho e vira painel. */
+  .site-header .nav {
     position: fixed;
     inset: 0;
     z-index: 70;
-    display: flex;
+    display: flex !important;
+    width: 100%;
+    height: 100dvh;
     flex-direction: column;
     justify-content: center;
+    align-items: stretch;
     gap: 0;
     padding: 128px 22px 46px;
     background: #080808;
@@ -71,14 +72,14 @@
     transition: transform .5s cubic-bezier(.76,0,.24,1);
     overflow-y: auto;
     overscroll-behavior: contain;
+    counter-reset: menu-item;
   }
 
-  .nav.open {
+  .site-header .nav.open {
     transform: translateY(0);
   }
 
-  /* Links menores e mais organizados que a versão anterior. */
-  .nav a {
+  .site-header .nav a {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -86,18 +87,18 @@
     padding: 18px 2px;
     border-bottom: 1px solid rgba(241,239,233,.16);
     font-family: Georgia, serif;
-    font-size: clamp(2.25rem, 10vw, 3.4rem);
+    font-size: clamp(2.25rem, 8vw, 3.4rem);
     font-weight: 400;
     line-height: 1;
     letter-spacing: -.03em;
     color: var(--paper);
   }
 
-  .nav a:first-child {
+  .site-header .nav a:first-child {
     border-top: 1px solid rgba(241,239,233,.16);
   }
 
-  .nav a::before {
+  .site-header .nav a::before {
     content: "0" counter(menu-item);
     counter-increment: menu-item;
     min-width: 34px;
@@ -108,11 +109,7 @@
     color: #a92d49;
   }
 
-  .nav {
-    counter-reset: menu-item;
-  }
-
-  .nav a::after {
+  .site-header .nav a::after {
     content: "↗";
     position: static;
     width: auto;
@@ -125,8 +122,8 @@
     transform: none;
   }
 
-  .nav a:hover,
-  .nav a:focus-visible {
+  .site-header .nav a:hover,
+  .site-header .nav a:focus-visible {
     color: #d75a76;
   }
 }
