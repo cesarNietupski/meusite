@@ -37,7 +37,7 @@
 
   .pricing .package-list > article,
   .compact-showcase .project,
-  .services article {
+  .services .service-list article {
     min-width: 0;
   }
 
@@ -66,6 +66,53 @@
 
   .pricing .package-list article > a {
     font-size: clamp(.7rem, .62vw, .84rem);
+  }
+
+  /* Sobrescreve as regras desktop antigas dos serviços com a mesma
+     especificidade, impedindo que os cards fiquem miniaturizados. */
+  .services .service-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: clamp(16px, 1.8vw, 26px) !important;
+  }
+
+  .services .service-list article {
+    display: flex !important;
+    min-height: clamp(260px, 24vw, 360px) !important;
+    padding: clamp(24px, 2.2vw, 34px) !important;
+  }
+
+  .services .service-list h2 {
+    max-width: 12ch !important;
+    font-size: clamp(2rem, 2.6vw, 3.1rem) !important;
+    line-height: .98 !important;
+  }
+
+  .services .service-list p {
+    max-width: 34ch !important;
+    font-size: clamp(.92rem, .9vw, 1.05rem) !important;
+    line-height: 1.55 !important;
+  }
+}
+
+/* Em uma janela mais estreita, três cards deixam de ter largura
+   confortável e os serviços passam para duas colunas. */
+@media (max-width: 1300px) {
+  .services .service-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .services .service-list article {
+    min-height: 300px !important;
+  }
+
+  .services .service-list h2 {
+    max-width: 15ch !important;
+    font-size: clamp(2.15rem, 3.2vw, 3rem) !important;
+  }
+
+  .services .service-list p {
+    font-size: 1rem !important;
   }
 }
 
@@ -102,21 +149,6 @@
     margin: 0;
   }
 
-  .services article {
-    grid-template-columns: 52px minmax(0, 1.1fr) minmax(240px, .9fr);
-    gap: clamp(16px, 2vw, 28px);
-  }
-
-  .services h2 {
-    font-size: clamp(2rem, 3.6vw, 3.2rem);
-  }
-
-  .services p {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
-
   .pricing-intro {
     max-width: 900px;
     margin-left: auto;
@@ -137,7 +169,7 @@
   }
 }
 
-/* Tablet / janela estreita */
+/* Antes de os dois cards ficarem estreitos demais, entra uma coluna. */
 @media (max-width: 900px) {
   .section-pad,
   .site-header,
@@ -180,23 +212,24 @@
     flex-wrap: wrap;
   }
 
-  .services article {
-    grid-template-columns: 40px minmax(0, 1fr);
-    align-items: start;
+  .services .service-list {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 18px !important;
   }
 
-  .services article > span {
-    grid-column: 1;
+  .services .service-list article {
+    min-height: 260px !important;
+    padding: 26px !important;
   }
 
-  .services article h2 {
-    grid-column: 2;
+  .services .service-list h2 {
+    max-width: none !important;
+    font-size: clamp(2rem, 6vw, 2.8rem) !important;
   }
 
-  .services article p {
-    grid-column: 2;
-    width: 100%;
-    max-width: 620px;
+  .services .service-list p {
+    max-width: 58ch !important;
+    font-size: 1rem !important;
   }
 
   .pricing-intro h2 {
@@ -299,19 +332,18 @@
     aspect-ratio: 4 / 4.6;
   }
 
-  .services article {
-    grid-template-columns: 32px minmax(0, 1fr);
-    gap: 12px;
-    padding: 22px 0;
+  .services .service-list article {
+    min-height: 235px !important;
+    padding: 22px !important;
   }
 
-  .services h2 {
-    font-size: clamp(2rem, 8vw, 2.8rem);
+  .services .service-list h2 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
   }
 
-  .services p {
-    font-size: .95rem;
-    line-height: 1.55;
+  .services .service-list p {
+    font-size: .95rem !important;
+    line-height: 1.55 !important;
   }
 
   .pricing-intro {
@@ -411,8 +443,8 @@
     font-size: clamp(2.25rem, 10.5vw, 3.4rem);
   }
 
-  .services h2 {
-    font-size: clamp(1.8rem, 8vw, 2.4rem);
+  .services .service-list h2 {
+    font-size: clamp(1.7rem, 8vw, 2.25rem) !important;
   }
 
   .manifesto-foot {
