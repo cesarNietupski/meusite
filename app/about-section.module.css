@@ -63,7 +63,7 @@
 
 .name {
   margin: 0;
-  font: 1000 clamp(4rem, 6vw, 7.5rem) / 0.92 Georgia, serif;
+  font: 1000 clamp(4rem, 6vw, 20rem) / 0.92 Georgia, serif;
   letter-spacing: -0.045em;
 }
 
