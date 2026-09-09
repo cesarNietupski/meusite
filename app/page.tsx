@@ -38,6 +38,7 @@ const albums = [
     filter: "Posicionamento",
     category: "Retato de Posicionamento",
     cover: "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
+    coverPosition: "center 25%",
     alt: "Retrato de posicionamento",
     images: [
       "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
@@ -157,7 +158,7 @@ export default function Home() {
       <div className="portfolio-heading"><span>Portfólio</span><h2>Trabalhos recentes</h2><p>Clique em um trabalho para visualizar todas as fotos do ensaio.</p></div>
       <div className="portfolio-filters" aria-label="Filtrar portfólio">{["Todos", "Corporativo", "Posicionamento", "Externo", "Casal", "Criativo"].map(filter => <button className={portfolioFilter === filter ? "active" : ""} key={filter} onClick={() => setPortfolioFilter(filter)}>{filter}</button>)}</div>
       <div className="projects">{albums.map((album, index) => portfolioFilter === "Todos" || portfolioFilter === album.filter ? <article className="project" key={album.title}>
-        <button className="image-wrap" onClick={() => openAlbum(index)} aria-label={`Abrir álbum ${album.title}`}><img src={album.cover} alt={album.alt} loading={index ? "lazy" : "eager"}/><span>Ver álbum ↗</span></button>
+        <button className="image-wrap" onClick={() => openAlbum(index)} aria-label={`Abrir álbum ${album.title}`}><img src={album.cover} alt={album.alt} loading={index ? "lazy" : "eager"} style={{ objectPosition: album.coverPosition || "center center" }}/><span>Ver álbum ↗</span></button>
         <div className="project-meta"><h2>{album.title}</h2><p>{album.category}</p></div>
       </article> : null)}</div>
     </section>
