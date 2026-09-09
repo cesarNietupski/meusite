@@ -38,7 +38,7 @@ const albums = [
     filter: "Posicionamento",
     category: "Retato de Posicionamento",
     cover: "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
-    coverPosition: "center 35%",
+    coverPosition: "center 1%",
     alt: "Retrato de posicionamento",
     images: [
       "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
