@@ -34,9 +34,9 @@ import styles from "./about-section.module.css";
 */
 const albums = [
   {
-    title: "Retato de Posicionamento",
+    title: "Essência",
     filter: "Retratos",
-    category: "Retrato corporativo",
+    category: "Retato de Posicionamento",
     cover: "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
     alt: "Retrato de posicionamento",
     images: [
