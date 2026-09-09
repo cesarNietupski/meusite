@@ -108,6 +108,15 @@ export default function Home() {
     return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
   }, [activeAlbum, menuOpen, changePhoto, closeAlbum]);
 
+  useEffect(() => {
+    if (!activeAlbum) return;
+
+    activeAlbum.images.forEach((src) => {
+      const image = new window.Image();
+      image.src = src;
+    });
+  }, [activeAlbum]);
+
   const openAlbum = (index: number) => { setAlbumIndex(index); setPhotoIndex(0); };
 
   return <main>
