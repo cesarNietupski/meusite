@@ -61,16 +61,33 @@ const albums = [
     ],
   },
   {
-    title: "Estrutura",
-    filter: "Ambientes",
-    category: "Arquitetura & espaços",
-    cover: "https://images.unsplash.com/photo-1683275147274-50526d63bb1d?auto=format&fit=crop&q=85&w=1600",
-    alt: "Arquitetura moderna em preto e branco",
+    title: "Afeto",
+    filter: "Casal",
+    category: "Ensaio de Casal",
+    cover: "https://drive.google.com/thumbnail?id=1o-3PYRGCL-NG-jFY1wtdg0xsIAcaPSXF&sz=w2000",
+    alt: "Ensaio de Casal",
     images: [
-      "https://images.unsplash.com/photo-1683275147274-50526d63bb1d?auto=format&fit=crop&q=85&w=1800",
-      "https://images.unsplash.com/photo-1762008312967-beaf3f59984e?auto=format&fit=crop&q=85&w=1800",
+      "https://drive.google.com/thumbnail?id=1SgRQ6FYdPA6CGdnlLAmY2jAQIFFFIv0V&sz=w2000",
+      "https://drive.google.com/thumbnail?id=15p7q-tSDELZqUW76prBFxg7AZbsvIXOn&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1FTRZr6I9zSgkdH2Mqp3NJnF8ZqR6Z0Aj&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1VBiam_h3OM0FQbAaqmaZB0Zj5tT0XNQJ&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1Qq9-N2LihLY3M3au-1y9aFE8J0BH_mfL&sz=w2000",
     ],
   },
+  {
+    title: "Autenticidade",
+    filter: "Criativo",
+    category: "Ensaio Criativo",
+    cover: "https://drive.google.com/thumbnail?id=1IcK8RvZ3B6OX_Q1-PqnMMlDLDGLWO_jn&sz=w2000",
+    alt: "Ensaio Criativo",
+    images: [
+      "https://drive.google.com/thumbnail?id=1IcK8RvZ3B6OX_Q1-PqnMMlDLDGLWO_jn&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1iwViHDrnesefAnWhkd11l4cGwCQZfdNp&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1vsoBioyFt6G99aXUSGpz_aYAGb3Fc2VJ&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1be_UCtU0RZytGYkG2JqiUb4aCbpaJl5X&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1BuQYAP_lllzFMO0jOrSudbUF78Y3Rggi&sz=w2000",
+    ],
+  }
 ];
 
 const services = [
@@ -138,7 +155,7 @@ export default function Home() {
 
     <section id="trabalhos" className="work section-pad compact-showcase">
       <div className="portfolio-heading"><span>Portfólio</span><h2>Trabalhos recentes</h2><p>Clique em um trabalho para visualizar todas as fotos do ensaio.</p></div>
-      <div className="portfolio-filters" aria-label="Filtrar portfólio">{["Todos", "Retratos", "Produtos", "Ambientes"].map(filter => <button className={portfolioFilter === filter ? "active" : ""} key={filter} onClick={() => setPortfolioFilter(filter)}>{filter}</button>)}</div>
+      <div className="portfolio-filters" aria-label="Filtrar portfólio">{["Todos", "Corporativo", "Posicionamento", "Externo", "Casal", "Criativo"].map(filter => <button className={portfolioFilter === filter ? "active" : ""} key={filter} onClick={() => setPortfolioFilter(filter)}>{filter}</button>)}</div>
       <div className="projects">{albums.map((album, index) => portfolioFilter === "Todos" || portfolioFilter === album.filter ? <article className="project" key={album.title}>
         <button className="image-wrap" onClick={() => openAlbum(index)} aria-label={`Abrir álbum ${album.title}`}><img src={album.cover} alt={album.alt} loading={index ? "lazy" : "eager"}/><span>Ver álbum ↗</span></button>
         <div className="project-meta"><h2>{album.title}</h2><p>{album.category}</p></div>
