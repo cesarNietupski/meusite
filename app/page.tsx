@@ -35,7 +35,7 @@ import styles from "./about-section.module.css";
 const albums = [
   {
     title: "Essência",
-    filter: "Retratos",
+    filter: "Posicionamento",
     category: "Retato de Posicionamento",
     cover: "https://drive.google.com/thumbnail?id=1_8D1eMt7w1ZcD93f8q6KzXBZQdhDzS4u&sz=w2000",
     alt: "Retrato de posicionamento",
@@ -48,14 +48,16 @@ const albums = [
     ],
   },
   {
-    title: "Essência",
-    filter: "Produtos",
-    category: "Produto & gastronomia",
-    cover: "https://format.creatorcdn.com/810e1661-cb2a-4632-b346-a371ecb003db/0/0/0/0%2C353%2C707%2C1060%2C760%2C760/0-0-0/1ea946d3-788f-4087-a47e-b52d6868836b/1/2/Props-1.jpg?fjkss=exp%3D2085856741~hmac%3D38774f697d63ed2d8218b4bc88768a93b853cae738133db57091672e2e66f0d5",
-    alt: "Composição gastronômica escura com cerâmicas",
+    title: "Comprometimento",
+    filter: "Corporativo",
+    category: "Retato Corporativo",
+    cover: "https://drive.google.com/thumbnail?id=1VpgqhbJ-ZGAaXPtzTO1-PdfW-jIi_rV5&sz=w2000",
+    alt: "Retato Corporativo",
     images: [
-      "https://format.creatorcdn.com/810e1661-cb2a-4632-b346-a371ecb003db/0/0/0/0%2C353%2C707%2C1060%2C760%2C760/0-0-0/1ea946d3-788f-4087-a47e-b52d6868836b/1/2/Props-1.jpg?fjkss=exp%3D2085856741~hmac%3D38774f697d63ed2d8218b4bc88768a93b853cae738133db57091672e2e66f0d5",
-      "https://www.productionparadise.com/newsletters/2093/photos/27236/web_original/black-v1.jpg",
+      "https://drive.google.com/thumbnail?id=1JpxGQrS6t8TxqdWSqxnHCAPpD2xUs0vx&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1lhVTDI5pXpDR-jEFtzDV0eZtYZDbA9ZU&sz=w2000",
+      "https://drive.google.com/thumbnail?id=13dlIo7845tVp6om6D7NwF_YTEjHclycU&sz=w2000",
+      "https://drive.google.com/thumbnail?id=1L895S5qE2tQld7A-5cbHJ1BKzGzJjqtK&sz=w2000",
     ],
   },
   {
