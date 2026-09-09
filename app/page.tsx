@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./about-section.module.css";
 
 /*
@@ -104,17 +104,81 @@ const packages = [
   { name: "Conteúdo", price: "R$ 1.490", note: "Para abastecer suas redes com consistência", items: ["Até 4 horas de produção", "50 fotos tratadas", "Planejamento visual"] },
 ];
 
+const getPreviewSrc = (src: string) => {
+  if (!src.includes("drive.google.com/thumbnail")) return src;
+  return src.replace(/([?&]sz=)w\d+/i, "$1w320");
+};
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [albumIndex, setAlbumIndex] = useState<number | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [portfolioFilter, setPortfolioFilter] = useState("Todos");
+  const [isPhotoLoading, setIsPhotoLoading] = useState(false);
+  const [currentPhotoLoaded, setCurrentPhotoLoaded] = useState(false);
+  const [previousPhotoSrc, setPreviousPhotoSrc] = useState<string | null>(null);
+  const transitionTimer = useRef<number | null>(null);
   const activeAlbum = albumIndex === null ? null : albums[albumIndex];
-  const closeAlbum = useCallback(() => setAlbumIndex(null), []);
+
+  const clearTransitionTimer = useCallback(() => {
+    if (transitionTimer.current !== null) {
+      window.clearTimeout(transitionTimer.current);
+      transitionTimer.current = null;
+    }
+  }, []);
+
+  const closeAlbum = useCallback(() => {
+    clearTransitionTimer();
+    setAlbumIndex(null);
+    setPreviousPhotoSrc(null);
+    setCurrentPhotoLoaded(false);
+    setIsPhotoLoading(false);
+  }, [clearTransitionTimer]);
+
+  const goToPhoto = useCallback((nextIndex: number) => {
+    if (!activeAlbum || isPhotoLoading) return;
+
+    const total = activeAlbum.images.length;
+    const normalizedIndex = (nextIndex + total) % total;
+    if (normalizedIndex === photoIndex) return;
+
+    const nextSrc = activeAlbum.images[normalizedIndex];
+    const currentSrc = activeAlbum.images[photoIndex];
+    setIsPhotoLoading(true);
+
+    const image = new window.Image();
+    image.decoding = "async";
+    image.onload = async () => {
+      try {
+        await image.decode();
+      } catch {
+        // O onload já confirma que a imagem está disponível mesmo se decode falhar.
+      }
+      clearTransitionTimer();
+      setPreviousPhotoSrc(currentSrc);
+      setCurrentPhotoLoaded(false);
+      setPhotoIndex(normalizedIndex);
+    };
+    image.onerror = () => setIsPhotoLoading(false);
+    image.src = nextSrc;
+  }, [activeAlbum, clearTransitionTimer, isPhotoLoading, photoIndex]);
+
   const changePhoto = useCallback((direction: number) => {
-    if (!activeAlbum) return;
-    setPhotoIndex((current) => (current + direction + activeAlbum.images.length) % activeAlbum.images.length);
-  }, [activeAlbum]);
+    goToPhoto(photoIndex + direction);
+  }, [goToPhoto, photoIndex]);
+
+  const handleCurrentPhotoLoad = useCallback(() => {
+    setCurrentPhotoLoaded(true);
+    setIsPhotoLoading(false);
+
+    if (previousPhotoSrc) {
+      clearTransitionTimer();
+      transitionTimer.current = window.setTimeout(() => {
+        setPreviousPhotoSrc(null);
+        transitionTimer.current = null;
+      }, 420);
+    }
+  }, [clearTransitionTimer, previousPhotoSrc]);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -133,11 +197,23 @@ export default function Home() {
 
     activeAlbum.images.forEach((src) => {
       const image = new window.Image();
+      image.decoding = "async";
       image.src = src;
     });
   }, [activeAlbum]);
 
-  const openAlbum = (index: number) => { setAlbumIndex(index); setPhotoIndex(0); };
+  useEffect(() => () => clearTransitionTimer(), [clearTransitionTimer]);
+
+  const openAlbum = (index: number) => {
+    clearTransitionTimer();
+    setAlbumIndex(index);
+    setPhotoIndex(0);
+    setPreviousPhotoSrc(null);
+    setCurrentPhotoLoaded(false);
+    setIsPhotoLoading(true);
+  };
+
+  const currentPhotoSrc = activeAlbum ? activeAlbum.images[photoIndex] : "";
 
   return <main>
     <header className="site-header">
@@ -212,8 +288,141 @@ export default function Home() {
 
     {activeAlbum && <div className="lightbox" role="dialog" aria-modal="true" aria-label={`Álbum ${activeAlbum.title}`}>
       <div className="lightbox-top"><div><strong>{activeAlbum.title}</strong><span>{activeAlbum.category}</span></div><button onClick={closeAlbum} aria-label="Fechar álbum">Fechar ×</button></div>
-      <div className="lightbox-stage"><button className="arrow prev" onClick={() => changePhoto(-1)} aria-label="Foto anterior">←</button><img src={activeAlbum.images[photoIndex]} alt={`${activeAlbum.alt} — foto ${photoIndex + 1}`} /><button className="arrow next" onClick={() => changePhoto(1)} aria-label="Próxima foto">→</button></div>
-      <div className="lightbox-bottom"><span>{String(photoIndex + 1).padStart(2,"0")} / {String(activeAlbum.images.length).padStart(2,"0")}</span><div>{activeAlbum.images.map((_,i) => <button key={i} className={i === photoIndex ? "active" : ""} onClick={() => setPhotoIndex(i)} aria-label={`Ir para foto ${i+1}`} />)}</div></div>
+      <div className="lightbox-stage">
+        <button className="arrow prev" onClick={() => changePhoto(-1)} aria-label="Foto anterior" disabled={isPhotoLoading}>←</button>
+        <div className={`lightbox-image-stack${isPhotoLoading ? " is-loading" : ""}`}>
+          <img className="lightbox-image lightbox-image-preview" src={getPreviewSrc(currentPhotoSrc)} alt="" aria-hidden="true" />
+          {previousPhotoSrc && <img className="lightbox-image lightbox-image-previous" src={previousPhotoSrc} alt="" aria-hidden="true" />}
+          <img
+            key={`${albumIndex}-${photoIndex}`}
+            className={`lightbox-image lightbox-image-current${currentPhotoLoaded ? " is-loaded" : ""}`}
+            src={currentPhotoSrc}
+            alt={`${activeAlbum.alt} — foto ${photoIndex + 1}`}
+            onLoad={handleCurrentPhotoLoad}
+            decoding="async"
+          />
+          {isPhotoLoading && <div className="lightbox-loader" role="status" aria-live="polite"><i /><span>Carregando</span></div>}
+        </div>
+        <button className="arrow next" onClick={() => changePhoto(1)} aria-label="Próxima foto" disabled={isPhotoLoading}>→</button>
+      </div>
+      <div className="lightbox-bottom"><span>{String(photoIndex + 1).padStart(2,"0")} / {String(activeAlbum.images.length).padStart(2,"0")}</span><div>{activeAlbum.images.map((_,i) => <button key={i} className={i === photoIndex ? "active" : ""} onClick={() => goToPhoto(i)} disabled={isPhotoLoading} aria-label={`Ir para foto ${i+1}`} />)}</div></div>
     </div>}
+
+    <style>{`
+      .lightbox-image-stack {
+        position: relative;
+        min-width: 0;
+        width: 100%;
+        height: 78vh;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+      }
+
+      .lightbox-stage .lightbox-image {
+        grid-area: 1 / 1;
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 78vh;
+        margin: auto;
+        object-fit: contain;
+      }
+
+      .lightbox-image-preview {
+        z-index: 1;
+        opacity: .72;
+        filter: blur(18px) brightness(.62);
+        transform: scale(1.035);
+      }
+
+      .lightbox-image-previous {
+        z-index: 2;
+        opacity: 1;
+      }
+
+      .lightbox-image-current {
+        z-index: 3;
+        opacity: 0;
+        filter: blur(5px);
+        transition: opacity .38s ease, filter .38s ease, transform .38s ease;
+      }
+
+      .lightbox-image-current.is-loaded {
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      .lightbox-image-stack.is-loading .lightbox-image-current.is-loaded {
+        opacity: .88;
+        filter: blur(1px) brightness(.86);
+        transform: scale(.997);
+      }
+
+      .lightbox-loader {
+        position: absolute;
+        z-index: 5;
+        left: 50%;
+        bottom: 22px;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 9px 13px;
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 999px;
+        background: rgba(4,4,4,.68);
+        backdrop-filter: blur(8px);
+        color: rgba(255,255,255,.82);
+        font-size: .58rem;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      .lightbox-loader i {
+        width: 12px;
+        height: 12px;
+        border: 1px solid rgba(255,255,255,.28);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: albumLoaderSpin .7s linear infinite;
+      }
+
+      .lightbox .arrow:disabled,
+      .lightbox-bottom button:disabled {
+        cursor: default;
+        opacity: .45;
+      }
+
+      @keyframes albumLoaderSpin {
+        to { transform: rotate(360deg); }
+      }
+
+      @media (max-width: 760px) {
+        .lightbox-image-stack {
+          height: 70vh;
+        }
+
+        .lightbox-stage .lightbox-image {
+          max-height: 70vh;
+        }
+
+        .lightbox-loader {
+          bottom: 74px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .lightbox-image-current {
+          transition: none;
+        }
+
+        .lightbox-loader i {
+          animation: none;
+        }
+      }
+    `}</style>
   </main>;
 }
